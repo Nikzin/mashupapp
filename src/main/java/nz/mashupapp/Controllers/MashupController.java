@@ -61,7 +61,7 @@ public class MashupController {
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
 
         RestTemplate restTemplate = new RestTemplate();
-        String url = "https://testcallbackb.serveo.net";
+        String url = "http://d6ab3fa8.ngrok.io";
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
                 .queryParam("account", "myaccount")
                 .queryParam("name", "myname");
@@ -76,8 +76,22 @@ public class MashupController {
 
         return "nothing";
         //return response;
+    }
+    @RequestMapping("/test2")
+    public String theTest2 () {
+
+        String url = "http://d6ab3fa8.ngrok.io?account=test2&name=name2";
+
+        RestTemplate restTemplate = new RestTemplate();
+        String testingString = restTemplate.getForObject(
+                    url, String.class);
+        System.out.println("test 2 "+ testingString);
+        return "nothing";
 
     }
+
+
+
     //for testing previous /test
     @RequestMapping("/")
 
