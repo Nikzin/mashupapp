@@ -81,13 +81,15 @@ public class MashupController {
     @RequestMapping("/test2")
     public String theTest2() {
 
-        //   String url = "http://104.248.251.193:8000/?account=test2&name=name2";
-        String url = "http://testcallbackb.serveo.net/?account=test2&name=name2";
-
+        String url = "http://104.248.251.193:8000/?account=test2&name=name2";
+        //String url = "http://testcallbackb.serveo.net/?account=test2&name=name2"; //just to notice it's going to testcallbackb.serveo.net with parameters
+        // and then serveo redirect parameters to localhost:8081 which in turn taking care of it at RequestMapping("/"), see below
+        //where: ssh -R testcallbackb:80:localhost:8081 serveo.net
+        //ssh -R localhost:8000: root@104.248.251.193
         RestTemplate restTemplate = new RestTemplate();
         String testingString = restTemplate.getForObject(
                 url, String.class);
-        System.out.println("response for current test2 printed here : " + testingString);
+        System.out.println("response for current test2 printed here: " + testingString);
         return "nothing";
 
     }
