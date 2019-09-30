@@ -87,7 +87,7 @@ public class MashupController {
         RestTemplate restTemplate = new RestTemplate();
         String testingString = restTemplate.getForObject(
                 url, String.class);
-        System.out.println("test 2 " + testingString);
+        System.out.println("response for current test2 internal request to serveo.net/ = " + testingString);
         return "nothing";
 
     }
@@ -99,9 +99,9 @@ public class MashupController {
     public String theResponse2(@RequestParam(name = "account", required = false) String account,
                                @RequestParam(name = "name", required = false) String name) {
         String resp = "";
-        resp += "default ";
+        resp += "when requested serveo.net with parameters it executed print of first param:  ";
         if (account != null) {
-            System.out.println("success! " + account);
+            System.out.println(account);
         }
         ;
         resp += account + " ";
